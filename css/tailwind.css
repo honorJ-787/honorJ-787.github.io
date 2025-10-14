@@ -1501,9 +1501,7 @@ video {
   text-align: center;
 }
 
-.font-dos {
-  font-family: DOSFont, monospace;
-}
+
 
 .text-2xl {
   font-size: 1.5rem;
@@ -1618,9 +1616,6 @@ video {
 .duration-300 {
   transition-duration: 300ms;
 }
-
-@font-face {
-  font-family: 'DOSFont';
 
   /* 自定义字体名称 */
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hexo</title>
+  <title>HONORJ-787</title>
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/tailwind.css">
   <!-- <link rel="stylesheet" href="/css/search.css"> -->
@@ -121,6 +121,93 @@ mjx-container[display="true"] + br {
 }
 </style></head>
 
+<style>
+  :root{
+    /* 一处调大小/高度 */
+    --hero-min: 24px; --hero-vw: 4vw; --hero-max: 80px; /* 标题字号 ≈你现在的1/4 */
+    --hero-height: 50vh;                                 /* 占屏高度：40–60vh 自调 */
+    /* 颜色与扫光参数 */
+    --hc1:#00ff66; --hc2:#14ffc0; /* 底色霓虹绿 */
+    --beam-w: 14%;                /* 扫光条宽度（越小越锋利） */
+    --beam-angle: 100deg;         /* 扫光角度 */
+  }
+
+  /* 关键：让自定义属性能被动画（否则不动） */
+  @property --beam-x {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: -30%;
+  }
+
+  .welcome-section{
+    min-height: var(--hero-height);
+    padding: 3.2rem 0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; background:#000;
+  }
+
+  /* 高对比“思考扫光” */
+  .hero-text{
+    font-size: clamp(var(--hero-min), var(--hero-vw), var(--hero-max));
+    line-height:1.12; font-weight:800; user-select:none;
+
+    /* 三层背景：白色芯 + 绿色晕圈 + 底层霓虹 */
+    background:
+      /* 1) 白色高亮芯（极亮、极窄） */
+      linear-gradient(var(--beam-angle),
+        transparent 0%,
+        rgba(255,255,255,0.00) 38%,
+        rgba(255,255,255,0.95) 50%,
+        rgba(255,255,255,0.00) 62%,
+        transparent 100%) var(--beam-x) 0 / var(--beam-w) 100% no-repeat,
+
+      /* 2) 绿色强化晕圈（更宽，抬亮度） */
+      linear-gradient(var(--beam-angle),
+        transparent 0%,
+        rgba(0,255,150,0.00) 30%,
+        rgba(0,255,150,0.90) 50%,
+        rgba(0,255,150,0.00) 70%,
+        transparent 100%) var(--beam-x) 0 / calc(var(--beam-w) * 1.8) 100% no-repeat,
+
+      /* 3) 底层霓虹渐变（慢速流动） */
+      linear-gradient(90deg, var(--hc1), var(--hc2), var(--hc1)) 0 0 / 200% 100% no-repeat;
+
+    background-blend-mode: screen, screen, normal;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+
+    /* 流动：底层慢流 + 扫光左右来回 */
+    animation: base-flow 8s ease-in-out infinite alternate,
+               think-sweep 2.0s ease-in-out infinite alternate;
+
+    /* 额外光晕与对比增强 */
+    filter: saturate(180%) contrast(120%) brightness(115%)
+            drop-shadow(0 0 14px rgba(0,255,140,.65))
+            drop-shadow(0 0 36px rgba(0,255,140,.35));
+  }
+
+  /* 扫光条沿 X 轴来回 */
+  @keyframes think-sweep{
+    0%   { --beam-x: -30%; }
+    100% { --beam-x: 130%; }
+  }
+
+  /* 底层渐变横向慢流 */
+  @keyframes base-flow{
+    0%   { background-position: 0% 0, var(--beam-x) 0,    0% 0; }
+    100% { background-position: 0% 0, var(--beam-x) 0,  100% 0; }
+  }
+
+  .hero-hr{ width:85%; border:0; border-top:2px dashed rgba(0,255,102,.7); margin-top:.75rem; }
+  .hero-sub{ margin-top:.5rem; font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:rgba(180,255,220,.9); }
+  .hero-desc{ margin-top:2rem; max-width:60rem; color:#00d870; font-size:clamp(16px,2vw,24px); }
+
+  /* 无动效优先时静态显示 */
+  @media (prefers-reduced-motion: reduce){
+    .hero-text{ animation:none; background-position: 0 0, 50% 0, 0 0; }
+  }
+</style>
+
+
 <body class="bg-black">
   <!-- 顶部导航栏 -->
   <div class="sticky top-0 z-50">
@@ -130,7 +217,7 @@ mjx-container[display="true"] + br {
     
       <h1 class="text-2xl font-bold ml-[100px] md:ml-0 animate-pulse text-hacker-color1 md:mr-[20%]">
         <a href="/" class="hover:text-white transition-colors select-none">
-          Hexo
+          HONORJ-787
         </a>
       </h1>
   
@@ -139,44 +226,8 @@ mjx-container[display="true"] + br {
         <ul class="flex space-x-6">
           
             <li>
-              <a href="/notes" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
-                Notes
-              </a>
-            </li>
-          
-            <li>
               <a href="/" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
                 Home
-              </a>
-            </li>
-          
-            <li>
-              <a href="/archives" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
-                Archives
-              </a>
-            </li>
-          
-            <li>
-              <a href="/categories" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
-                Categories
-              </a>
-            </li>
-          
-            <li>
-              <a href="/tags" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
-                Tags
-              </a>
-            </li>
-          
-            <li>
-              <a href="/about" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
-                About
-              </a>
-            </li>
-          
-            <li>
-              <a href="/rss.xml" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
-                RSS
               </a>
             </li>
           
@@ -196,44 +247,8 @@ mjx-container[display="true"] + br {
       <ul class="space-y-2 py-4 px-6">
         
           <li>
-            <a href="/notes" class="block text-white hover:text-hacker-color1 transition-colors">
-              Notes
-            </a>
-          </li>
-        
-          <li>
             <a href="/" class="block text-white hover:text-hacker-color1 transition-colors">
               Home
-            </a>
-          </li>
-        
-          <li>
-            <a href="/archives" class="block text-white hover:text-hacker-color1 transition-colors">
-              Archives
-            </a>
-          </li>
-        
-          <li>
-            <a href="/categories" class="block text-white hover:text-hacker-color1 transition-colors">
-              Categories
-            </a>
-          </li>
-        
-          <li>
-            <a href="/tags" class="block text-white hover:text-hacker-color1 transition-colors">
-              Tags
-            </a>
-          </li>
-        
-          <li>
-            <a href="/about" class="block text-white hover:text-hacker-color1 transition-colors">
-              About
-            </a>
-          </li>
-        
-          <li>
-            <a href="/rss.xml" class="block text-white hover:text-hacker-color1 transition-colors">
-              RSS
             </a>
           </li>
         
@@ -265,23 +280,21 @@ mjx-container[display="true"] + br {
 
   </div>
   
-  <main class="w-screen min-h-screen container mx-auto">
-    <!-- 欢迎页面 -->
-    <div class="min-h-screen bg-black text-center flex flex-col justify-center items-center h-screen">
-        <h1 class="
-        text-hacker-color2 font-dos md:text-huge text-3xl text-wrap animate-bounce select-none bg-red-400 md:min-h-[5rem] md:leading-[5rem] 
-        bg-gradient-to-r from-hacker-color1 to-hacker-color2 bg-clip-text text-transparent md:-mt-80 -mt-40
-        "></h1>
-        <hr class="w-[85%] border-t-2 border-line-color border-dashed">
-        
-        <p class="text-hacker-color2 md:mt-40 mt-20 md:text-2xl text-lg text-wrap font-dos w-[70%] select-none"></p>
+<!-- 欢迎页面  流动高亮） -->
+<div class="welcome-section">
+  <h1 class="hero-text font-dos">
+    欢迎 / Welcome / Bienvenue / Добро пожаловать / Bienvenidos / أهلًا وسهلًا
+  </h1>
+  <hr class="hero-hr">
+  <p class="hero-sub">hello world</p>
+  <p class="hero-desc font-dos"></p>
+</div>
 
-        <!-- 下拉按钮 -->
-        <svg id="down-btn" class="icon w-16 h-16 absolute top-[75%] hover:-translate-y-1 transition-all cursor-pointer" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#bbbbbb">
-          <path d="M185.884 327.55 146.3 367.133 512.021 732.779 877.7 367.133 838.117 327.55 511.997 653.676Z"></path>
-        </svg>
-    </div>
 
+
+
+
+    
     <!-- 博客文章与侧边栏 -->
     <div class="min-h-screen flex gap-8" id="scr-target">
       <!-- 文章部分 -->
@@ -441,23 +454,8 @@ mjx-container[display="true"] + br {
           <h3 class="text-hacker-color1 font-bold text-lg">Links</h3>
           <div>
             
-              <a href="https://space.bilibili.com/1515974075?spm_id_from=333.1387.fans.user_card.click" target="_blank" class="text-hacker-color3 hover:text-white">
-                b站主页
-              </a>
-              <br />
-            
-              <a href="https://github.com/m310ct" target="_blank" class="text-hacker-color3 hover:text-white">
-                github主页
-              </a>
-              <br />
-            
-              <a href="mailto:3667864590@qq.com" target="_blank" class="text-hacker-color3 hover:text-white">
-                电子邮箱
-              </a>
-              <br />
-            
-              <a href="https://www.m310ct.com/notes" target="_blank" class="text-hacker-color3 hover:text-white">
-                Hacker Notes
+              <a href="https://github.com/honorJ-787" target="_blank" class="text-hacker-color3 hover:text-white">
+                github主页/github page
               </a>
               <br />
             
