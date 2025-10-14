@@ -122,6 +122,38 @@ mjx-container[display="true"] + br {
 </style></head>
 
 <style>
+    :root{
+      --hero-min: 24px; --hero-vw: 4vw; --hero-max: 80px;
+      --hero-height: 50vh;
+      --hc1:#00ff66; --hc2:#14ffc0; --beam-w:14%; --beam-angle:100deg;
+    }
+    @property --beam-x { syntax:'<percentage>'; inherits:false; initial-value:-30%; }
+
+    .welcome-section{ min-height:var(--hero-height); padding:3.2rem 0;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; background:#000; }
+    .hero-text{ font-size:clamp(var(--hero-min),var(--hero-vw),var(--hero-max));
+      line-height:1.12; font-weight:800; user-select:none;
+      background:
+        linear-gradient(var(--beam-angle),transparent 0%,rgba(255,255,255,0) 38%,
+          rgba(255,255,255,.95) 50%, rgba(255,255,255,0) 62%, transparent 100%) var(--beam-x) 0 / var(--beam-w) 100% no-repeat,
+        linear-gradient(var(--beam-angle),transparent 0%, rgba(0,255,150,0) 30%,
+          rgba(0,255,150,.9) 50%, rgba(0,255,150,0) 70%, transparent 100%) var(--beam-x) 0 / calc(var(--beam-w)*1.8) 100% no-repeat,
+        linear-gradient(90deg,var(--hc1),var(--hc2),var(--hc1)) 0 0 / 200% 100% no-repeat;
+      background-blend-mode:screen,screen,normal; -webkit-background-clip:text; background-clip:text; color:transparent;
+      animation:base-flow 8s ease-in-out infinite alternate, think-sweep 2s ease-in-out infinite alternate;
+      filter:saturate(180%) contrast(120%) brightness(115%) drop-shadow(0 0 14px rgba(0,255,140,.65)) drop-shadow(0 0 36px rgba(0,255,140,.35));
+    }
+    @keyframes think-sweep{ 0%{--beam-x:-30%} 100%{--beam-x:130%} }
+    @keyframes base-flow{ 0%{background-position:0% 0, var(--beam-x) 0, 0% 0}
+                          100%{background-position:0% 0, var(--beam-x) 0, 100% 0} }
+    .hero-hr{ width:85%; border:0; border-top:2px dashed rgba(0,255,102,.7); margin-top:.75rem; }
+    .hero-sub{ margin-top:.5rem; font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:rgba(180,255,220,.9); }
+    .hero-desc{ margin-top:2rem; max-width:60rem; color:#00d870; font-size:clamp(16px,2vw,24px); }
+    @media (prefers-reduced-motion:reduce){ .hero-text{animation:none; background-position:0 0, 50% 0, 0 0} }
+  </style>
+
+<style>
   :root{
     /* 一处调大小/高度 */
     --hero-min: 24px; --hero-vw: 4vw; --hero-max: 80px; /* 标题字号 ≈你现在的1/4 */
@@ -286,7 +318,8 @@ mjx-container[display="true"] + br {
     欢迎 / Welcome / Bienvenue / Добро пожаловать / Bienvenidos / أهلًا وسهلًا
   </h1>
   <hr class="hero-hr">
-  <p class="hero-sub">hello world</p>
+  <p class="hero-sub">Check the Page </p>
+  <p class="hero-sub">  https://github.com/honorJ-787 </p>
   <p class="hero-desc font-dos"></p>
 </div>
 
@@ -297,29 +330,7 @@ mjx-container[display="true"] + br {
       <!-- 文章部分 -->
       <div class="w-full">
         
-          <div class="post-item group border-b border-b-hacker-color3 ">
-            <a href="/2025/10/14/%E8%A1%8C%E6%98%9F%E8%BD%AE%E7%B3%BB%E9%85%8D%E9%BD%BF%E7%AE%97%E6%B3%95/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
-              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
-                行星轮系设计：类别的简述-中字
-              </h2>
-              /* <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
-                2025-10-14
-              </p> */ 
-              <p class="post-excerpt text-hacker-color3 group-hover:text-white">
-                
-
-.article-entry, .post-body, .post-content { font-size: 17px; line-height: 1.9; }
-.article-entry h2, .article-entry h3,
-.post-body h2,    .post-body h3,
-.post-content h2, .post-content h3{
-  margin-top: 1.4em; margin-bottom: .6em; line-height: 1.35;
-}
-.article-entry figure, .post-body figure, .post...
-              </p>
-            </a>
-          </div>
-        
-          <div class="post-item group border-b border-b-hacker-color3 ">
+           <div class="post-item group border-b border-b-hacker-color3 ">
             <a href="/2025/10/14/Planetary-Gear-Train-Design-A-Brief-Description-of-Categories-English-Version/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
               <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
                 Planetary Gear Tooth-Number Allocation
@@ -337,9 +348,30 @@ mjx-container[display="true"] + br {
   margin-top: 1.4em; margin-bottom: .6em; line-height: 1.35;
 }
 .article-entry figure, .post-body figure, .post...
-              </p>
+              </p> 
             </a>
-          </div>
+          </div> */
+        
+           <div class="post-item group border-b border-b-hacker-color3 ">
+            <a href="/2025/10/01/%E8%A1%8C%E6%98%9F%E8%BD%AE%E7%B3%BB%E9%85%8D%E9%BD%BF%E7%AE%97%E6%B3%95/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
+              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
+                行星轮系设计：类别的简述-中字
+              </h2>
+              /* <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
+                2025-10-01
+              </p> */ 
+              <p class="post-excerpt text-hacker-color3 group-hover:text-white">
+                
+.article-entry, .post-body, .post-content { font-size: 17px; line-height: 1.9; }
+.article-entry h2, .article-entry h3,
+.post-body h2,    .post-body h3,
+.post-content h2, .post-content h3{
+  margin-top: 1.4em; margin-bottom: .6em; line-height: 1.35;
+}
+.article-entry figure, .post-body figure, .post-...
+              </p> 
+            </a>
+          </div> */
         
       </div>
       
@@ -347,6 +379,29 @@ mjx-container[display="true"] + br {
       <!-- 侧边部分 -->
       
     <div class="w-1/3 hidden md:block space-y-4 mt-8">
+      
+        
+  
+        
+  
+        
+  
+        
+  
+        
+          <!-- 链接部分 -->
+          <h3 class="text-hacker-color1 font-bold text-lg">Links</h3>
+          <div>
+            
+              <a href="https://github.com/honorJ-787" target="_blank" class="text-hacker-color3 hover:text-white">
+                github主页/github page
+              </a>
+              <br />
+            
+          </div>
+          <hr class="w-full border-t-2 border-line-color border-dashed">
+        
+  
       
         
           <!-- 搜索框 -->
@@ -435,29 +490,6 @@ mjx-container[display="true"] + br {
           <hr class="w-full border-t-2 border-line-color border-dashed">
         
   
-        
-  
-      
-        
-  
-        
-  
-        
-  
-        
-  
-        
-          <!-- 链接部分 -->
-          <h3 class="text-hacker-color1 font-bold text-lg">Links</h3>
-          <div>
-            
-              <a href="https://github.com/honorJ-787" target="_blank" class="text-hacker-color3 hover:text-white">
-                github主页/github page
-              </a>
-              <br />
-            
-          </div>
-          <hr class="w-full border-t-2 border-line-color border-dashed">
         
   
       
