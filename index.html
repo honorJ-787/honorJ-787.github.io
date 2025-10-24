@@ -335,20 +335,6 @@ mjx-container[display="true"] + br {
       <div class="w-full">
         
            /* <div class="post-item group border-b border-b-hacker-color3 ">
-            <a href="/2025/10/24/%E9%BD%BF%E5%BB%93%E6%9B%B2%E7%BA%BF%E7%94%9F%E6%88%90/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
-              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
-                齿廓曲线生成
-              </h2>
-              /* <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
-                2025-10-24
-              </p> */ 
-             /* <p class="post-excerpt text-hacker-color3 group-hover:text-white">
-                ...
-              </p> 
-            </a>
-          </div> */
-        
-           /* <div class="post-item group border-b border-b-hacker-color3 ">
             <a href="/2025/10/14/Planetary-Gear-Train-Design-A-Brief-Description-of-Categories-English-Version/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
               <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
                 Planetary Gear Tooth-Number Allocation
@@ -379,14 +365,30 @@ mjx-container[display="true"] + br {
                 2025-10-01
               </p> */ 
              /* <p class="post-excerpt text-hacker-color3 group-hover:text-white">
-                
+                本文整理了行星轮系配齿算法的分类与实现要点。  
+
+
+
 .article-entry, .post-body, .post-content { font-size: 17px; line-height: 1.9; }
-.article-entry h2, .article-entry h3,
-.post-body h2,    .post-body h3,
-.post-content h2, .post-content h3{
-  margin-top: 1.4em; margin-bottom: .6em; line-height: 1.35;
-}
-.article-entry figure, .post-body figure, .post-...
+...
+
+
+
+概述本算法源于齿轮箱传动链设计过程，尝试构建算法求解行星轮系的齿数组合。遵循“应有尽有”的思路，先生成尽可能多的可行组合，再由设计人员按需求筛选。本文先给出基本分类与符号，随后说明三种方法：暴力历遍、等强度与最小外廓尺寸原则、以及基于人工神经网络（ANN）的传动比选择。对无双联齿轮的轮系，暴力法通常足够；对含双联齿轮的双排系统，后两种更合适。双排系统涉及传动比分配，...
+              </p> 
+            </a>
+          </div> */
+        
+           /* <div class="post-item group border-b border-b-hacker-color3 ">
+            <a href="/2025/10/01/%E9%BD%BF%E5%BB%93%E6%9B%B2%E7%BA%BF%E7%94%9F%E6%88%90/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
+              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
+                齿廓曲线生成-源自1982
+              </h2>
+              /* <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
+                2025-10-01
+              </p> */ 
+             /* <p class="post-excerpt text-hacker-color3 group-hover:text-white">
+                参考文献：Mitchiner R G, Mabie H H. The determination of the Lewis form factor and the AGMA geometry factor J for external spur gear teeth[J]. Journal of Mechanical Design, 1982, 104(1): 148-158....
               </p> 
             </a>
           </div> */
@@ -503,12 +505,12 @@ mjx-container[display="true"] + br {
           <div class="flex flex-wrap justify-start items-center">
             
               <a href="http://example.com/tags/配齿/" class="text-hacker-color3 hover:bg-hacker-hover-color hover:text-white block border border-hacker-color3 hover:border-dotted rounded-sm py-0.5 px-2 mr-4 mb-2">
-                配齿 <sub>2</sub>
+                配齿 <sub>1</sub>
               </a>
               <br />
             
               <a href="http://example.com/tags/行星齿轮/" class="text-hacker-color3 hover:bg-hacker-hover-color hover:text-white block border border-hacker-color3 hover:border-dotted rounded-sm py-0.5 px-2 mr-4 mb-2">
-                行星齿轮 <sub>2</sub>
+                行星齿轮 <sub>1</sub>
               </a>
               <br />
             
