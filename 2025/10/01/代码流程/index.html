@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    p{
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+        font-size: 1.1rem;
+    }
+    figure{
+        margin: 0 !important;
+    }
+    pre{
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    td{
+        padding: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    h1,h2,h3,h4,h5,h6{
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    @media (min-width: 1024px) {
+        #middle-box{
+            min-width: 56rem;
+        }
+    
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-787 - 行星齿轮设计：流程图与方法</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/toc.css">
+    
+<header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
+    <div class="container mx-auto flex items-center justify-between space-x-8">
+    
+      <h1 class="text-2xl font-bold ml-[100px] md:ml-0 animate-pulse text-hacker-color1 md:mr-[20%]">
+        <a href="/" class="hover:text-white transition-colors select-none">
+          J-787
+        </a>
+      </h1>
+  
+    <!-- 大屏幕 -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          
+            <li>
+              <a href="/" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Home
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+  
+      <!-- 小屏幕 -->
+      <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- 折叠菜单 -->
+    <nav id="mobile-menu" class="hidden bg-black">
+      <ul class="space-y-2 py-4 px-6">
+        
+          <li>
+            <a href="/" class="block text-white hover:text-hacker-color1 transition-colors">
+              Home
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+  
+    <!-- RSS Link -->
+    <link rel="alternate" type="application/rss+xml" title=" RSS" href="/rss.xml" />
+  </header>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/search.js"></script>
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        } else {
+        mobileMenu.classList.add("hidden");
+        }
+    });
+    });
+
+  </script>
+
+
+<meta name="generator" content="Hexo 8.0.0"></head>
+<body class="bg-black text-hacker-color3 container mx-auto" style="overflow-x:hidden">
+    <!-- 文章标题 -->
+    <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">行星齿轮设计：流程图与方法</h1>
+
+    <!-- 发布时间 -->
+    <!-- <p class="text-hacker-color3 text-center text-sm mb-4">
+        2025-10-01
+    </p>  -->
+
+    <!-- 文章内容 -->
+    <div id="article-content" class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight" style="display: flex;">
+        <div id="middle-box">
+            <h1 id="NW-记号下的-2Z-X-B-与-NW-型行星传动配齿方法（完整整理）"><a href="#NW-记号下的-2Z-X-B-与-NW-型行星传动配齿方法（完整整理）" class="headerlink" title="NW 记号下的 2Z-X(B) 与 NW 型行星传动配齿方法（完整整理）"></a>NW 记号下的 2Z-X(B) 与 NW 型行星传动配齿方法（完整整理）</h1><blockquote>
+<p>记号对应：原 2Z-X(B) 中 a→a，c→g，d→f，b→b，x→H（行星架）。<br>下文统一采用 NW 记号：$z_a, z_b, z_g, z_f$ 与 $H$。</p>
+</blockquote>
+<hr>
+<h2 id="方法一：NW-记号下的-2Z-X-B-等价配齿公式"><a href="#方法一：NW-记号下的-2Z-X-B-等价配齿公式" class="headerlink" title="方法一：NW 记号下的 2Z-X(B) 等价配齿公式"></a>方法一：NW 记号下的 2Z-X(B) 等价配齿公式</h2><h3 id="1-传动比与内传动比"><a href="#1-传动比与内传动比" class="headerlink" title="1. 传动比与内传动比"></a>1. 传动比与内传动比</h3><p>据 2Z-X(B) 型的传动比公式，有（$b$ 固定、$a$ 输入、$H$ 输出）：<br>$$<br>i_{aH}^{,b}<br>&#x3D; 1 - i_{ab}^{,H}<br>&#x3D; 1 + \frac{z_g,z_b}{z_a,z_f}<br>&#x3D; 1 + p’ \tag{3-34}<br>$$</p>
+<p>由表 2-1 可知其<strong>内传动比</strong> $p’$ 为<br>$$<br>p’&#x3D;\frac{z_g,z_b}{z_a,z_f}&#x3D;i_{aH}^{,b}-1 \tag{3-35}<br>$$</p>
+<p>再由表 3-1 中可得其<strong>同心条件</strong>为<br>$$<br>z_a+z_g&#x3D;z_b-z_f \tag{3-36}<br>$$</p>
+<blockquote>
+<p>当给定传动比 $i_p&#x3D;i_{aH}^{,b}$ 时，按上述公式可以选择各轮的齿数。<br>但由于式 (3-35) 分母中的 $z_a$ 与 $z_f$ 不能太小；分子中的 $z_g$ 与 $z_b$ 又不能太大，故 $p’$ 值不可能很大。<br>因此，该 B 型传动不能得到很大的传动比 $i_{aH}^{,b}$；其实用传动比范围约为 <strong>$i_{aH}^{,b}&#x3D;7\sim16$</strong>。</p>
+</blockquote>
+<h3 id="2-参数引入与范围"><a href="#2-参数引入与范围" class="headerlink" title="2. 参数引入与范围"></a>2. 参数引入与范围</h3><p>现将 2Z-X(B) 型传动配齿方法讨论如下。首先令<br>$$<br>A&#x3D;\frac{z_g}{z_a},\qquad B&#x3D;\frac{z_b}{z_f} \tag{3-37}<br>$$</p>
+<p>即有关系式<br>$$<br>z_g&#x3D;A,z_a,\qquad z_b&#x3D;B,z_f \tag{3-38}<br>$$</p>
+<p>将 (3-38) 代入 (3-35)，可得<br>$$<br>p’&#x3D;A,B \tag{3-39}<br>$$</p>
+<blockquote>
+<p><strong>经验取值范围：</strong><br>$$<br>1.2\le A\le 4.2,\qquad 2.4\le B\le 4.8<br>$$</p>
+</blockquote>
+<h3 id="3-最小中心轮齿数"><a href="#3-最小中心轮齿数" class="headerlink" title="3. 最小中心轮齿数"></a>3. 最小中心轮齿数</h3><p>最小中心轮 $a$ 的齿数可按下式选取<br>$$<br>z_a&#x3D;K,n_p,\qquad K\in{4,5,6,7} \tag{3-40}<br>$$<br>其中 $n_p$ 为行星轮数，$K$ 为经验系数。</p>
+<h3 id="4-由同心条件求-z-f"><a href="#4-由同心条件求-z-f" class="headerlink" title="4. 由同心条件求 $z_f$"></a>4. 由同心条件求 $z_f$</h3><p>将式 (3-38) 代入同心条件 (3-36)，得<br>$$<br>z_a + A z_a &#x3D; B z_f - z_f<br>\quad\Longrightarrow\quad<br>z_f&#x3D;\frac{A+1}{B-1},z_a \tag{3-41}<br>$$</p>
+<h3 id="5-安装（装配）条件"><a href="#5-安装（装配）条件" class="headerlink" title="5. 安装（装配）条件"></a>5. 安装（装配）条件</h3><p>再考虑到 B 型传动的安装条件（式 (3-21)）<br>$$<br>\frac{z_a}{n_p}+\frac{z_b}{n_p}&#x3D;C\quad(\text{整数})<br>$$</p>
+<h3 id="6-设计流程（可用于程序枚举）"><a href="#6-设计流程（可用于程序枚举）" class="headerlink" title="6. 设计流程（可用于程序枚举）"></a>6. 设计流程（可用于程序枚举）</h3><ol>
+<li>选取 $n_p$ 与 $K$，取 $z_a&#x3D;K n_p$；  </li>
+<li>在经验范围内选 $A,B$，由 $p’&#x3D;AB$ 得期望传动比 $i_{aH}^{,b}&#x3D;1+p’$；  </li>
+<li>按 (3-41) 求 $z_f$；再由 $z_b&#x3D;B z_f$、$z_g&#x3D;A z_a$ 得其余齿数；  </li>
+<li>检查装配条件 $(z_a+z_b)&#x2F;n_p\in\mathbb{Z}$，必要时对 $A,B$ 或 $K$ 微调并取整；  </li>
+<li>校核邻接、根切与强度等约束。</li>
+</ol>
+<hr>
+<h2 id="方法二：NW-型行星传动的配齿数简便方法（对应图-8-12、图-8-13）"><a href="#方法二：NW-型行星传动的配齿数简便方法（对应图-8-12、图-8-13）" class="headerlink" title="方法二：NW 型行星传动的配齿数简便方法（对应图 8-12、图 8-13）"></a>方法二：NW 型行星传动的配齿数简便方法（对应图 8-12、图 8-13）</h2><blockquote>
+<p>本方法在满足装配条件的前提下，给出一套便于计算的配齿步骤，并引入结构尺寸比值 $\gamma$ 以指导选型。</p>
+</blockquote>
+<p><strong>① 根据传动比条件</strong><br>$$<br>i_{aH}^{,b} &#x3D; 1 + \frac{z_g,z_b}{z_a,z_f} \tag{8-31}<br>$$</p>
+<p>令<br>$$<br>i_1&#x3D;\frac{z_g}{z_a},\qquad<br>i_2&#x3D;\frac{z_b}{z_f},\qquad<br>i_1&#x3D;\alpha,i_2<br>$$</p>
+<p>代入传动比式，得<br>$$<br>i_{aH}^{,b}&#x3D;1+\alpha,i_2^2<br>\quad\Longrightarrow\quad<br>i_2&#x3D;\sqrt{\frac{i_{aH}^{,b}-1}{\alpha}} \tag{8-32}<br>$$</p>
+<p><strong>② 根据非角度变位的同心条件</strong><br>$$<br>z_a(1+i_1)&#x3D;z_f(i_2-1)<br>\quad\Longrightarrow\quad<br>z_f&#x3D;\beta,z_a,\qquad<br>\beta&#x3D;\frac{i_1+1}{,i_2-1,} \tag{8-33}<br>$$</p>
+<p><strong>③ 满足结构设计要求（见图 8-12）</strong></p>
+<p>定义两对齿轮副径向轮廓尺寸比值<br>$$<br>L_1&#x3D;m z_a(1+2 i_1),\qquad<br>L_2&#x3D;m z_b<br>&#x3D; m\Bigl[i_2,\beta,z_a\Bigr]<br>&#x3D; m z_a,\frac{i_2(i_1+1)}{i_2-1}<br>$$</p>
+<p>故<br>$$<br>\gamma&#x3D;\frac{L_1}{L_2}<br>&#x3D;\frac{(1+2 i_1)(i_2-1)}{i_2(i_1+1)} \tag{8-34}<br>$$</p>
+<blockquote>
+<p>工程用法：分别以 $i_{aH}^{,b}$ 与 $\alpha$ 为自变量，代入式 (8-33) 与式 (8-34) 计算相应的 $\gamma$，绘制 $\gamma$ 等值线图（如图 8-13），据以选取合理的 $\alpha$ 与尺寸比例。</p>
+</blockquote>
+<hr>
+<h3 id="附：常用符号"><a href="#附：常用符号" class="headerlink" title="附：常用符号"></a>附：常用符号</h3><ul>
+<li>$z_a, z_b, z_g, z_f$：分别为太阳轮、内齿圈、行星小齿（g）、行星大齿（f）的齿数；  </li>
+<li>$n_p$：行星轮数；$K$：经验系数；  </li>
+<li>$i_{aH}^{,b}$：$b$ 固定、$a$ 输入、行星架 $H$ 输出的传动比；  </li>
+<li>$i_1&#x3D;z_g&#x2F;z_a,\ i_2&#x3D;z_b&#x2F;z_f,\ \alpha&#x3D;i_1&#x2F;i_2$；  </li>
+<li>$p’$：内传动比；$\beta&#x3D;z_f&#x2F;z_a$；$\gamma&#x3D;L_1&#x2F;L_2$；  </li>
+<li>装配整数条件：$(z_a+z_b)&#x2F;n_p\in\mathbb{Z}$（考虑端面修正时用等效齿数）。</li>
+</ul>
+
+        </div>
+        
+            <div class="post-container">
+            <aside class="toc-container">
+                <button class="toc-toggle">文章目录</button>
+                <nav class="toc" id="toc"></nav>
+            </aside>
+        </div>
+        
+    </div>
+
+
+    <!-- 返回主页链接 -->
+    <div class="text-center my-8">
+        <a href="/" class="text-hacker-color1 underline hover:text-hacker-color2">← Back to Home</a>
+    </div>
+
+      
+      <script src="/js/toc.js"></script>  <!-- 引入 TOC 逻辑 -->
+      
+      
+
+    <footer class="bg-black text-gray-400 py-4">
+ <div class="container mx-auto text-center">
+  <p>© <span id="current-year"></span>  John Doe 
+    <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexploit">Hexpolit</a></p>
+ </div>
+</footer>
+
+<script> 
+ document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+<script>
+window.MathJax = {
+tex: {
+  inlineMath: [['$', '$'], ['\\(', '\\)']]  // 启用 $...$ 和 \( ... \)
+},
+svg: {
+  fontCache: 'global'
+}
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+
+
+</body>
+</html>
